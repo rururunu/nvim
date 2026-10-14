@@ -1,4 +1,132 @@
-# 💤 LazyVim
+# Neovim 中文入门
 
-A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
-Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
+启动页在宽终端中分两栏显示：左侧为最近项目和文件，右侧为常用操作；窄终端自动合并为单栏。最近文件优先展示文件名，目录单独显示；同一 Windows 项目的路径大小写差异会自动合并。
+
+编辑界面使用绝对行号，文件侧栏减少连续树形连线，顶部文件标签保留更长的文件名。底部状态栏显示模式、Git 分支、文件名、错误数量和光标位置，避免长方法签名挤占空间。
+
+文件侧栏默认隐藏搜索框，按 `/` 开始搜索；按 Esc 或离开搜索框后清除筛选并收起。顶部缓冲区标签从侧栏右边的编辑区开始，诊断数量集中在底部状态栏。
+
+侧栏顶部用圆角卡片展示项目名和目录。缓冲区选中项使用主题选中色和粗体，文件图标背景与标签保持一致。
+
+侧栏使用独立底色和圆角外框，文件标签与状态栏采用分段样式；命令、补全、快捷键提示等浮窗统一使用圆角边框。外观颜色随项目主题切换。
+
+编辑区使用原生窗口，避免浮动编辑卡片干扰分屏、关闭与会话恢复；侧栏、终端和 Markdown 预览保留圆角。终端在底部占用独立空间，不遮挡代码。顶部标签使用细分隔线，不显示三角装饰。推荐用 `:Exit` 选择保存或放弃修改后退出。
+
+在终端或普通模式中，用 `Ctrl + h/j/k/l` 分别切换到左/下/上/右区域。从底部终端按 `Ctrl + k` 返回上方区域，编辑区按 `Ctrl + h` 进入文件树。`Ctrl + 方向键` 调整窗口大小。双击 `Esc` 退出终端输入模式；按 `i` 继续输入，普通模式按空格 `t` 隐藏或打开终端。
+
+这份配置基于 LazyVim。直接运行 `nvim` 会打开中文启动页；用方向键选中项目或文件，再按 Enter 打开，也可以按项目或文件前的数字。项目名后会显示它的父目录，方便区分同名项目。启动页只展示最近的几个项目；按 `p` 会打开“所有项目”窗口，可以输入文字筛选，再按 Enter 打开。最近项目保存在 Neovim 的状态目录中，重启后仍会显示；首次使用时也会从最近文件中找出已有的 Git 项目。
+
+## 从 VS Code 迁移，先记住这些
+
+| 任务 | 操作 |
+| --- | --- |
+| 打开启动页 | 启动时直接出现；编辑中输入 `:Dashboard` 后回车 |
+| 选择以前打开的项目 | 启动页“最近项目”中选择；或按 `p` 搜索项目 |
+| 编辑时切换项目 | 按 `空格 f p` |
+| 给当前项目换主题 | 启动页按 `t`；编辑中按 `空格 u P`，或输入 `:ProjectTheme` |
+| 查找文件 | 启动页按 `f`；编辑中按 `空格 f f` |
+| 搜索项目文字 | 启动页按 `g`；编辑中按 `空格 /` |
+| 打开文件树 | 编辑中按 `空格 e` |
+| 保存文件 | `Ctrl+S`，也可以输入 `:w` 后回车 |
+| 复制到 Windows 剪贴板 | 可视模式选中文本后按 `y` 或 `Ctrl+C` |
+| 从 Windows 剪贴板粘贴 | 普通模式按 `p`，插入模式按 `Ctrl+V` |
+| 切换已打开文件 | `Shift+H` / `Shift+L` |
+| 查看错误和警告 | 按 `空格 x x` 打开诊断列表 |
+| 返回普通模式 | 按 `Esc` |
+| 退出 | 输入 `:q` 后回车；全部退出用 `:qa` |
+| 选择是否保存并退出 | 输入 `:Exit`，选择“保存所有文件并退出”或“不保存所有文件并退出”；Esc 取消 |
+
+`空格` 是引导键：在普通模式下按一下，稍等片刻会显示可用快捷键。普通模式可以移动、搜索和执行命令；按 `i` 进入输入模式，像普通编辑器一样输入文字；按 `Esc` 返回普通模式。
+
+输入 `:` 命令时，补全列表会在常用命令旁显示中文说明，例如 `write` 显示“保存当前文件”，`ProjectTheme` 显示“预览并选择当前项目主题”。使用上下方向键选择候选项，也可以用 `Ctrl+N` / `Ctrl+P`。未翻译的冷门命令会显示 `:help :命令名` 帮助入口。命令仍使用原来的英文名称；文件路径补全不添加命令说明。
+
+## 最近项目如何工作
+
+打开项目中的文件后，配置会记住该项目目录。Git 项目及带有 `package.json`、`Cargo.toml`、`pyproject.toml`、`go.mod` 等标记的项目会识别到根目录；普通文件夹会记住文件所在目录。启动时选择项目会切换到该目录，尝试恢复该项目上次的会话；没有会话时会打开文件选择器。
+
+在命令行用 `nvim 路径/文件` 直接打开文件时，仍会直接进入文件，不会强制显示启动页。
+
+## 编辑与数据库工具
+
+### Signal-Server 固定工作流
+
+选择 Signal-Server 项目后，`空格 r r` 自动显示专用任务：编译 service 及依赖、打包、UtilTest、service 测试集、运行服务和运行调试服务。按仓库的 `.java-version` 与 Maven release 设置使用本机 JDK 26；优先使用仓库的 `mvnw.cmd`。完整测试集需要项目对应的依赖环境。
+
+第一次启动服务前执行 `:SignalSetup`，确认 JDK 目录、服务 YAML 和 secrets bundle 路径。配置只保存在 Neovim 状态目录 `project-run`，不写入 Signal 仓库，也不复制 secrets 内容。启动基于已打包的服务 JAR；需要先运行打包任务。
+
+调试流程：`空格 r r` →“启动服务并监听调试端口”→ 打开 Java 源文件并等待 LSP 就绪 → `F9` 设置断点 → `空格 r d` 附加。默认仅监听 `127.0.0.1:5005`。普通 Java 调试仍使用 F5。启动服务会连接 YAML 配置的外部系统，请确认使用的是自己的开发环境。
+
+常用编辑入口：`Ctrl+S` 保存，`Ctrl+P` 查找项目文件，`空格 /` 搜索项目内容，`F12` 跳到定义，`Shift+F12` 查引用，`F2` 预览重命名，`Alt+←/→` 返回/前进，`空格 g g` 打开 LazyGit。
+
+### 中文工作台与运行流程
+
+按 `F1` 或连续按两次空格打开中文工作台：项目、文件、运行、停止、错误、调试、Git、环境检查、配置备份与恢复都从这里进入。
+
+| 操作 | 快捷键 / 命令 |
+| --- | --- |
+| 运行 / 构建 / 测试 | `空格 r r` / `:ProjectRun` |
+| 重新运行上次任务 | `空格 r l` / `:ProjectRerun` |
+| 停止当前项目任务 | `空格 r s` / `:ProjectStop` |
+| 任务列表、状态与输出 | `空格 r o` / `:OverseerOpen`；列表中 `o` 查看输出 |
+| 构建错误列表 | `空格 r e`；Enter 跳到文件，`:cnext` / `:cprev` 切换错误 |
+| Java 当前测试 / 测试类 | `空格 r t` / `空格 r T`（需要 JUnit 项目与 Java LSP） |
+| Rust 测试选择 | `空格 r t` / `空格 r T` 打开语言服务提供的测试列表 |
+| Kotlin 测试 | Gradle 项目下 `空格 r t` / `空格 r T` 输入测试类或方法筛选器 |
+| 重跑失败测试任务 | `空格 r f`（重跑整个失败任务，不是仅失败的测试用例） |
+| 断点 / 启动或继续调试 | `F9` / `F5`；`空格 d t` 结束调试 |
+| 环境检查 | `:DevHealth`、`:checkhealth` |
+| 保存 / 恢复项目窗口 | `:WorkspaceSave` / `:WorkspaceRestore` |
+| 配置备份 / 回退 | `:ConfigBackup` / `:ConfigRestore` |
+
+任务按当前项目识别 Cargo、Maven、Gradle 和 package.json 的常用脚本。优先使用 Maven / Gradle wrapper；VS Code 的 tasks.json 和更多构建任务通过“更多任务模板”进入。启动任务前会保存文件；普通切换窗口、项目不会自动写盘。Maven / Gradle 项目的启动命令因应用类型不同，请用项目任务模板或 `.vscode/tasks.json` 指定。
+
+切项目时复用该项目的工作区标签页，保留其他项目未保存的缓冲区。工作区记录保存在 Neovim 状态目录的 `workspaces` 中，仅保存真实文件及分屏结构，不保存终端进程；恢复时创建新标签页，不覆盖当前编辑内容。配置备份位于状态目录 `config-backups`，恢复前自动备份当前配置；恢复后重启并按需要用 `:Lazy restore` 恢复锁定的插件版本。备份不包含 Mason、插件目录或未保存文件。
+
+Kotlin 调试已验证附加到运行中的 JVM：使用 `-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=127.0.0.1:5005` 启动应用，在 Kotlin 源文件设置断点，再选择 F5 的 Attach 配置。旧版 Kotlin 调试适配器对 `suspend=y` 的挂起启动存在兼容问题；源码与构建结果必须匹配。Java 与 Rust 可使用各自语言服务提供的调试配置。项目依赖、容器、远程服务和自定义构建仍需项目自身配置。
+
+验证脚本和已验证边界见 [开发工作台验证](tests/README.md)。
+
+### Git 更改与左右对比
+
+`空格 g g` 在圆角大窗口中打开当前项目的 LazyGit。选中文件查看差异，Enter 进入修改块，`q` 返回或退出，`?` 查看按键帮助。Windows 通过 `winget install --id JesseDuffield.lazygit --exact` 安装 LazyGit；侧栏保留文件树。
+
+打开 Markdown 文件后自动左右分屏：左侧源码，右侧 Markview 只读预览，编辑与滚动同步。使用 `Ctrl+h/l` 切换区域；`:MarkdownSplitClose` 关闭预览，`:MarkdownSplit` 重新打开。支持标题、表格、代码块及部分 HTML 标签；终端内不保证网页 CSS 布局或 SVG 图片效果。浏览器不会自动打开，需要完整网页效果时手动执行 `:MarkdownPreview`。
+
+| 操作 | 快捷键 / 命令 |
+| --- | --- |
+| 重命名符号并预览修改 | `空格 c r`，Enter 执行，Esc 取消 |
+| 参数、数组等切换单行 / 多行 | `空格 c j` |
+| 按驼峰或下划线子单词移动 | `w` / `e` / `b`；`W` / `E` / `B` 保留大范围移动 |
+| 跳出 / 返回括号或引号 | 插入模式 `Tab` / `Shift+Tab`；代码片段与补全优先 |
+| 查看撤销历史树 | `空格 s u` |
+| 添加 / 删除本行位置标记 | `空格 m a` / `空格 m d` |
+| 上一个 / 下一个 / 查看全部标记 | `空格 m p` / `空格 m n` / `空格 m l` |
+| 数据库面板 | `空格 D` 或 `:DBUI` |
+| 批量整理文件 | `空格 f o`：Oil 中编辑文件名，`:w` 后确认操作 |
+| 选中缩进块内部 / 整块 | 可视或操作等待模式 `iI` / `aI`，例如 `diI` |
+
+数据库连接由你自行添加，还需安装对应客户端（如 PostgreSQL 的 `psql`、MySQL 的 `mysql` 或 SQLite 的 `sqlite3`）。重命名依赖语言服务器；TreeSJ、Tabout 依赖对应语言解析器与支持规则。文件树仍使用原来的侧栏，Oil 按需打开。
+
+## 项目专属主题设置
+
+进入项目后按 `空格 u P`，在窗口中搜索主题。移动到选项时会实时预览，按 Enter 才确认并保存；按 Esc 取消会恢复项目原先设定的主题。内置 12 个主题系列、36 种配色：TokyoNight、Catppuccin、Kanagawa、Gruvbox、Rosé Pine、Nightfox、GitHub、Everforest、Nord、Dracula、VS Code、Oxocarbon，包含深色与浅色变体。下次打开该项目会自动恢复保存的主题。切到没有专属设置的项目时，使用默认的 TokyoNight Storm。输入 `:ProjectThemeReset` 可以清除当前项目的专属设置。
+
+主题记录保存在 Neovim 的状态目录 `project-themes.json`，不会写进项目仓库。
+
+## Java、Rust、Kotlin 开发
+
+这三种语言都启用了 Tree-sitter 语法高亮和 LSP。Java 使用 JDTLS，Rust 使用 rust-analyzer，Kotlin 使用 Kotlin Language Server。Rust 使用 rustfmt、Kotlin 使用 ktlint 格式化；Java 由 JDTLS 提供格式化。保存时沿用 LazyVim 的格式化设置。
+
+| 操作 | 快捷键 |
+| --- | --- |
+| 跳转到定义 | `g d` |
+| 查看类型或文档 | `K` |
+| 重命名符号 | `空格 c r` |
+| 代码操作 | `空格 c a` |
+| 格式化 | `空格 c f` |
+| 开关参数等行内提示 | `空格 u h` |
+| 检查 LSP 状态 | `:checkhealth vim.lsp` |
+
+Java 还提供导入整理和 JDTLS 测试/调试功能；Rust 可用 `空格 d r` 查找可调试目标，Windows 下已配置 CodeLLDB。Kotlin 的格式化、诊断和调试工具由 Mason 安装。当前电脑的 Kotlin Language Server 无法用 JDK 26 启动，因此它单独使用 `C:/My/data/Jir/home/21/temurin` 中的 JDK 21；项目构建使用的 Java 版本不受此设置影响。
+
+> 提示：现有配置还保留了插入模式下连续按 `pp` 返回普通模式的个人快捷键。如果你需要频繁输入 `pp`，建议只用 `Esc`，并移除 [lua/config/keymaps.lua](lua/config/keymaps.lua) 中这条映射。

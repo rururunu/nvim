@@ -12,74 +12,48 @@ return {
     },
     dashboard = {
       enabled = true,
+      width = 64,
+      pane_gap = 8,
       preset = {
         header = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-                             @临轩linxuan_bilibili
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡴⠶⠶⣤⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⡾⠋⠀⠀⠀⠀⠉⠻⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⠏⠀⠀⠀⠀⠀⠀⠀⠀⠹⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⡏⠀⢠⣤⣤⡄⢀⣤⣤⣄⠀⠹⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⠀⠀⣿⣿⣿⡿⢸⣿⣿⣿⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀
-⠀⠀⣄  ⠀   ⢠⡇⠀⠀⠈⠛⠛⠁⠀⠙⠛⠋⠀⠀⠈⣧⠀⠀⠀ ⡔ ⠀⠀⠀
-⢀⡤⠙⢷⣦   ⠀⣸⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⡆⠀⠀⠀⠈⢙⣲⣶⠀
- ⣴⣾⣿⡋   ⢰⡏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⠀⠀⠰⢿⣿⠿⠁ 
- ⠙⠛⠿⠛⠀  ⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣇⠀⠀⠀⠀⠀ ⠀
-⠀⠀⠀⠀⠀⠀⠀⢸⡷⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢠⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⡆⢻⡄⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⣾⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⠀⠀⠀⠘⠂⢷⡀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⣼⠃⠀⠀⢀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⢻⠀⢂⠀⠀⠀⠀⠻⣆⠀⠀⠀
-⠀⠀⠀⢀⡾⠃⠀⠀⠀⡜⠀⠀⠀⠀⠀⠀⠀ ⢸⣿⠀⠀⢸⠀⠘⠂⠀⠀⠀⠀⠈⢳⣄⠀
-⠀⠀⢀⡞⠁⠀⠸⠷⢰⠁⠀⠀⠀⠀⠀⠀⠀  ⢸⣿⠀⠈⡄⠀⠀⣤⠄⠀⢀⣠⠏⢹⡆
-⠀⣴⡟⣀⠀⠀⠷⢀⠃⠀⠀⠀⣤⡀⠀⠀⠀⢸⣿⠀⠀⠀⠀⡇⠀⠀⢰⡟⠋⠁⠀⣠⡞⠀
- ⠻⣧⣿⣧⣜⠃⡘⠀⠀⠀⢠⣿⠇⠀⠀⠀ ⢸⣿⠀⠀⠀⠃⠀⠀⢸⣇⣀⣀⡼⠋$⠀
-⠀⠀⠘⢿⣿⡏⠐⢁⠄⠀⠀⠸⡷⠀⠀⠀⠀ ⢸⣿⠀⠀⠀⠀⠀⠀⠀⠘⢻⣿⡇⠀⠀⠀
-$⠀⢠⣿⠋⠀⠀⡌⠀⠀⣸⣿⠄⠀⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⣿⡇⠀⠀⠀
-⠀⠀⡌⠀⠺⠃⠀⠀⠀⢀⣿⠏⠀⠀⠀⠀⠀⠿⠆  ⠀⠀⠀⣆⠀⠀⢰⡎⣿⡇⠀$⠀
-⠀⠀⢦⣄⠀⠀⠀⠀⠀⣾⠟⠀⠀$⠀⠀⠺⠇⠀⠀⠀⠀⢹⠀⠀⠀⠀⢸⣷⠻⣷⠀⠀⠀
-⠀⠀⠀⠉⠲⠶⣤⣤⣶⠆⠀⠀⠀⠀⠀⣼⡟⠀⠀⠀$⠀⠸⡄⠀⠀⠀⢸⣿⣶⣿⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⣿⠛⣃⠀⠀⠀⣀⡀⠀⣿⣧⣄⡀⠀⠀⠀⠀⡇⠀⠀⠀⢸⣿⠉⠉⠀⠀⠀
-⠀⠀$⠀⠀⠀⣿⠀⠈⠉⠉⠉⠉⠉⠁⠉⠉⠉⠉⢳⣤⡄⠀⠃⠀⠀⠀⠸⣿⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⢻⣄⠀⠀⠀⠀⠀⣠⣄⠀⠀⠀⠀⠀⠀⢈⣡⣤⡀⠀⠀⠀⣿⠀⠀⠀⠀⠀
-⠀⠀⠀$⠀⠀⠀⠉⠉⠳⠶⠶⠞⠁⠈⢧⡀⠀⠀⣠⡴⠋⠀⠈⠹⢧⣄⣠⠏⠀⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠒⠛⠁⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀$⠀⠀⠀
-          $                       
-                    $             
-                                  
-Don't touch the ghost or it'll haunt you
+NEOVIM
+继续你的工作
 ]],
+        keys = {
+          { icon = " ", key = "p", desc = "所有项目", action = function()
+            require("config.recent_projects").open_picker()
+          end },
+          { icon = " ", key = "f", desc = "查找文件", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "g", desc = "搜索内容", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "n", desc = "新建文件", action = ":ene | startinsert" },
+          { icon = " ", key = "r", desc = "最近文件", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "s", desc = "恢复当前项目工作区", action = function()
+            require("config.workspace").restore()
+          end },
+          { icon = "󰏘 ", key = "t", desc = "选择当前项目主题", action = function()
+            require("config.project_theme").pick()
+          end },
+          { icon = " ", key = "h", desc = "中文入门指南", action = function()
+            vim.cmd.edit(vim.fn.fnameescape(vim.fn.stdpath("config") .. "/README.md"))
+          end },
+          { icon = " ", key = "q", desc = "保存或放弃修改后退出", action = function()
+            require("config.exit").pick()
+          end },
+        },
       },
       sections = {
+        { section = "header", padding = 1 },
+        { text = "选择一项并回车，也可按右侧快捷键", align = "center", padding = 1 },
         {
-          --icon = " ",
-          key = "e",
-          --desc = "Explorer",
-          action = ":lua Snacks.explorer({ cwd = LazyVim.root() })",
-        },
-        { section = "header" },
-        { pane = 2, icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-        { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
-        { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
-        {
-          pane = 2,
-          icon = " ",
-          title = "Git Status",
-          section = "terminal",
-          enabled = function()
-            return require("snacks.git").get_root() ~= nil
+          icon = " ", title = "最近项目 · p 查看全部", indent = 2, padding = 1,
+          function()
+            return require("config.dashboard_content").projects()
           end,
-          cmd = "git status --short --branch --renames",
-          height = 5,
-          padding = 1,
-          ttl = 5 * 60,
-          indent = 3,
         },
-        { pane = 2, section = "startup" },
+        { icon = " ", title = "最近文件 · r 查看全部", indent = 2, padding = 1,
+          function() return require("config.dashboard_content").files() end },
+        { pane = 2, header = "常用操作", padding = 2 },
+        { pane = 2, section = "keys", indent = 2, gap = 1, padding = 1 },
       },
     },
     image = {
@@ -126,7 +100,19 @@ Don't touch the ghost or it'll haunt you
 
     terminal = {
       enabled = true,
-      win = { style = "terminal" },
+      override = function(cmd, opts) return require("config.docked_terminal").open(cmd, opts) end,
+      win = {
+        style = "terminal",
+        position = "float",
+        relative = "win",
+        border = "rounded",
+        backdrop = false,
+        row = 0,
+        col = 0,
+        title = " 终端 ",
+        title_pos = "left",
+        wo = { winhighlight = "Normal:IslandSurface,NormalNC:IslandSurface,FloatBorder:IslandBorder,FloatTitle:IslandTitle" },
+      },
     },
   },
   keys = {
@@ -145,22 +131,15 @@ Don't touch the ghost or it'll haunt you
     -- 先初始化 snacks
     require("snacks").setup(opts)
 
-    -- Dashboard 颜色设置
-    vim.api.nvim_set_hl(0, "SnacksDashboardHeader", {
-      fg = "#e9edf8",
-      bold = true,
-    })
-    vim.api.nvim_set_hl(0, "SnacksDashboardIcon", {
-      fg = "#8EB8F2",
-      bold = true,
-    })
-    vim.api.nvim_set_hl(0, "SnacksDashboardDesc", {
-      fg = "#d7c6ff",
-      bold = true,
-    })
-    vim.api.nvim_set_hl(0, "SnacksDashboardKey", {
-      fg = "#fe9550",
-      bold = true,
+    local function highlights()
+      for group, link in pairs({ Header = "Title", Icon = "Directory", Desc = "Normal", Key = "Special", Dir = "Comment", File = "Normal" }) do
+        vim.api.nvim_set_hl(0, "SnacksDashboard" .. group, { link = link })
+      end
+    end
+    highlights()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      group = vim.api.nvim_create_augroup("dashboard_theme", { clear = true }),
+      callback = highlights,
     })
   end,
 }
