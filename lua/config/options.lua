@@ -5,6 +5,9 @@
 -- 默认复制、删除和粘贴使用 Windows 系统剪贴板。
 vim.opt.clipboard = "unnamedplus"
 vim.opt.winborder = "rounded"
+-- 单击切换编辑区、文件树和终端焦点；拖动仍用于选择或调整分屏。
+vim.opt.mouse = "a"
+vim.opt.mousefocus = false
 -- Windows 的 SHELL 可能指向 PowerShell，但 Neovim 仍保留 cmd 的 /s /c 参数。
 -- 统一 shell 参数，保证更多任务模板与 :! 命令同样可运行。
 if

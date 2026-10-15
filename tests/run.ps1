@@ -14,6 +14,16 @@ try {
     if ($UI) {
         & python tests/ui.py
         if ($LASTEXITCODE -ne 0) { throw 'Embedded UI validation failed' }
+        & python tests/editor_layout.py
+        if ($LASTEXITCODE -ne 0) { throw 'Editor layout validation failed' }
+        & python tests/terminal_layout.py
+        if ($LASTEXITCODE -ne 0) { throw 'Terminal layout validation failed' }
+        & python tests/minimap.py
+        if ($LASTEXITCODE -ne 0) { throw 'Minimap validation failed' }
+        & python tests/buffer_close.py
+        if ($LASTEXITCODE -ne 0) { throw 'Buffer close with explorer validation failed' }
+        & python tests/workspace_ui.py
+        if ($LASTEXITCODE -ne 0) { throw 'Workspace layout and buffers validation failed' }
     }
 } finally {
     Pop-Location

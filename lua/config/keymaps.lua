@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 
 vim.keymap.set({ "n", "i" }, "<C-s>", "<cmd>write<cr>", { desc = "保存当前文件" })
+vim.keymap.set("n", "<leader>bd", function() require("config.buffers").close() end, { desc = "关闭当前文件" })
 vim.keymap.set("n", "<C-p>", function()
   Snacks.picker.files({ cwd = require("config.project_tasks").root() })
 end, { desc = "查找项目文件" })

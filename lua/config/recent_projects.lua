@@ -127,6 +127,10 @@ function M.switch(path)
   M.record(path)
   require("config.project_theme").apply(path)
   -- 每个入口使用明确的 cwd，避免旧缓冲区的项目根目录覆盖选择结果。
+  local workspace = require("config.workspace")
+  if workspace.exists(path) and workspace.restore({ new_tab = false, quiet = true }) then
+    return
+  end
   Snacks.explorer({ cwd = path })
   Snacks.picker.files({ cwd = path, title = "项目文件 · " .. vim.fs.basename(path) })
 end

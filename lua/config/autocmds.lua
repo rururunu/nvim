@@ -19,6 +19,7 @@ require("config.editor_card").setup()
 require("config.markdown_split").setup()
 require("config.workspace").setup()
 require("config.workbench").setup()
+require("config.buffers").setup()
 
 vim.api.nvim_create_user_command("Dashboard", function()
   Snacks.dashboard()

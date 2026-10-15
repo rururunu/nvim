@@ -116,15 +116,16 @@ NEOVIM
     },
   },
   keys = {
-    -- 空格 + t 切换终端（支持数字前缀切换不同实例）
+    -- 终端共用底部区域，每次创建新的标签。
     {
       "<leader>t",
       function()
-        local count = vim.v.count1
-        Snacks.terminal(nil, { count = count })
+        require("config.terminal_tabs").new()
       end,
-      desc = "Terminal",
+      desc = "新建终端标签",
     },
+    { "<F7>", function() require("config.terminal_tabs").toggle() end, desc = "显示/隐藏终端面板", mode = { "n", "t" } },
+    { "<leader>T", function() require("config.terminal_tabs").pick() end, desc = "选择终端标签" },
   },
   -- 设置 Dashboard 自定义颜色
   config = function(_, opts)
